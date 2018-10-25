@@ -1,8 +1,21 @@
-public class Fraction
+public final class Fraction
 {
-	private int num;
-	private int den;
-	
+
+	public static void main(String[] args)
+	{
+		Fraction test = new Fraction(5,5);
+		System.out.println(test+" == "+UN+" ? "+test.equals(UN));
+		System.out.println(test+" > "+ZERO+" ? "+test.greaterThan(ZERO));
+	}
+
+
+	private final int num;
+	public int getNum(){return num;}
+	private final int den;
+	public int getDen(){return den;}
+	private static final Fraction ZERO = new Fraction(0, 1);
+	private static final Fraction UN = new Fraction(1, 1);
+
 	public Fraction()
 	{
 		num=0;
@@ -21,18 +34,22 @@ public class Fraction
 		den = 1;
 	}
 
+	@Override
+	public String toString()
+	{
+		return num+"/"+den;
+	}
+
 	public double toDouble()
 	{
 		return (double)num/(double)den;
 	}
 
-	public boolean equals(Object o)
+	public boolean equals(Fraction other)
 	{
-		if(this == o)
+		if(this == other)
 			return true;
-		if(!o.instanceof(Fraction))
-			return false;
-		if(num == o.getNum() && den == o.getDen())
+		if(toDouble()==other.toDouble())
 			return true;
 		return false;
 	}
