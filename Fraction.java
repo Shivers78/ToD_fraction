@@ -9,6 +9,12 @@ public class Fraction
 		this.den = den;
 	}
 
+	public Fraction(int num)
+	{
+		this.num = num;
+		den = 1;
+	}
+
 	public double toDouble()
 	{
 		return (double)num/(double)den;
